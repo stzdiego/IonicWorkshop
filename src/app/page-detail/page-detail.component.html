@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ anime?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="anime">
+  <ion-img class="img-anime" [src]="anime?.images?.jpg.image_url" />
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ anime?.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ anime?.synopsis }}</p>
+      <br>
+      <p>Title japanese: {{ anime?.title_japanese }}</p>
+      <p>Rating: {{ anime?.score }}</p>
+      <p>Episodes: {{ anime?.episodes }}</p>
+      <br>
+      <ion-button (click)="openLink(anime?.url)">More Info</ion-button>
+      <ion-button (click)="openLink(anime?.trailer.url)">Watch Trailer</ion-button>
+
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>
+
+<ion-content *ngIf="!anime">
+  <ion-spinner></ion-spinner>
+</ion-content>

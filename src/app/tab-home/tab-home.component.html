@@ -1,0 +1,25 @@
+<app-custom-header></app-custom-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>
+      <h1>Most Popular</h1>
+      <p>Animes</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-loading *ngIf="isLoading" message="Loading..."></ion-loading>
+
+  <ion-list *ngIf="animes">
+    <ion-item class="anime-item" *ngFor="let anime of animes">
+      <ion-img class="img-anime" [src]="anime.images.jpg.image_url" alt="Anime Image"></ion-img>
+      <ion-label class="label-description">
+        <div>
+          <h1>{{ anime.title }}</h1>
+          <p>{{ anime.synopsis }}</p>
+        </div>
+        <ion-button class="detail-button" (click)="openDetail(anime)">Detail</ion-button>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
